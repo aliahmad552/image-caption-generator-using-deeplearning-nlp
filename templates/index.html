@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🖼️ Image Caption Generator</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🧠 AI Image Caption Generator</h1>
+        <p>Upload an image and let AI describe it for you!</p>
+
+        <div class="upload-section">
+            <input type="file" id="imageInput" accept="image/*">
+            <button id="uploadBtn">Generate Caption</button>
+        </div>
+
+        <div id="previewSection" class="hidden">
+            <img id="previewImage" alt="Preview Image">
+            <div class="caption-box">
+                <h3>Generated Caption:</h3>
+                <p id="captionText">Please wait...</p>
+            </div>
+        </div>
+
+        <footer>
+            <p>Developed by <b>Ali Ahmad</b> | Powered by Deep Learning 🚀</p>
+        </footer>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
