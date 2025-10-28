@@ -46,3 +46,19 @@ def generate_caption(model, image_feature, tokenizer, max_length=34):
     final_caption = in_text.replace("startseq", "").replace("endseq", "").strip()
     return final_caption
 
+# API endpoint for image upload
+@app.post("/upload-image/")
+async def upload_image(file: UploadFile = File(...)):
+    # Save uploaded image
+    save_path = f"uploads/{file.filename}"
+    with open(save_path, "wb") as f:
+        f.write(await file.read())
+
+    # Preprocess image
+    image_feature = preprocess_image(save_path)
+
+    image_id = file.filename
+    image_feature = features.get(image_id, image_feature)
+
+    caption = generate_caption(model, image_feature, tokenizer)
+    return JSONResponse(content={"caption": caption})
